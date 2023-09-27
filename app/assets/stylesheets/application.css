@@ -13,3 +13,120 @@
  *= require_tree .
  *= require_self
  */
+
+/* Reset styles */
+*,
+html {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Remove text decoration from links */
+a {
+  text-decoration: none;
+}
+
+/* Common styles for containers */
+.container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 10px;
+  margin-bottom: 2rem;
+  border: 1px solid black;
+}
+
+.container > .photo {
+  width: 40%;
+}
+
+.container > .see-posts,
+.container > .pagination {
+  width: 150px;
+  height: 40px;
+  background-color: rgb(212, 142, 51);
+  color: white;
+  padding: 5px;
+  font-size: 17px;
+  text-align: center;
+}
+
+/* User profile section */
+.users-article {
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  padding-top: 2rem;
+}
+
+.users-article > .details {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.post-details > p,
+.posts-details > p {
+  position: relative;
+  top: 90%;
+  left: 87%;
+}
+
+.users-article > .details > p {
+  padding-top: 30%;
+}
+
+.users-article > .bio {
+  width: 80%;
+  padding: 10px;
+}
+
+/* Post section */
+.post-details,
+.posts-details,
+.comment-cont,
+.post-comments,
+.comments-container {
+  width: 80%;
+  border: 1px solid black;
+  padding: 10px;
+}
+
+.post-details > h2 {
+  padding-bottom: 10px;
+}
+
+.post-comments > .post-comment {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.posts-details > .left {
+  display: flex;
+}
+
+.posts-details > .post-head {
+  display: flex;
+  justify-content: space-between;
+}
+
+.posts-details > .post-body {
+  padding-top: 20px;
+}
+
+/* Post container */
+.post-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 1px;
+  padding: 10px;
+}
