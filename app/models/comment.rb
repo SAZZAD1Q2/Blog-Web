@@ -10,6 +10,5 @@ class Comment < ApplicationRecord
     post.increment!(:comment_counter)
   end
 end
-# To add a comment,  the following command goes well:
+# To add a comment, please run the following command. It will go well:
 # Comment.create(user: second_user, post: first_post, text: 'Hi Tom!')
-
