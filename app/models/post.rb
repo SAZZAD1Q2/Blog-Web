@@ -13,8 +13,8 @@ class Post < ApplicationRecord
   attribute :comment_counter, :integer, default: 0
   attribute :like_counter, :integer, default: 0
 
-  def recent_comments(limit = 5)
-    comments.order(created_at: :desc).limit(limit)
+  def recent_comments_post(limit)
+    self.comments.order(created_at: :desc).limit(limit)
   end
 
   private

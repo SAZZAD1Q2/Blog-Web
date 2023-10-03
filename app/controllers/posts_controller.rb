@@ -1,4 +1,3 @@
-# rubocop:disable all
 class PostsController < ApplicationController
   def index
     @user = User.find(params[:user_id])
@@ -6,9 +5,9 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = Post.includes(:comments).find(params[:id])
-    @user = User.find(params[:user_id])
-    @likes = @post.likes.all
+    @post = Post.find(params[:id])
+    @user = @post.author # Assuming the user who authored the post is associated with the 'author' attribute.
+    @comments = @post.comments
   end
 
   def new
@@ -16,15 +15,14 @@ class PostsController < ApplicationController
   end
 
   def create
-    @user = current_user
-    @post = @user.posts.build(post_params)
+    @post = current_user.posts.new(post_params)
 
-    if @post.save
-      redirect_to user_post_url(@user, @post)
-
-    else
-      flash.now[:error] = 'Oops, something went wrong'
-      redirect_to new_post_url
+    respond_to do |format|
+      if @post.save
+        format.html { redirect_to user_post_path(current_user, @post), notice: 'Post was successfully created.' }
+      else
+        format.html { render action: 'new' }
+      end
     end
   end
 
