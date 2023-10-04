@@ -16,11 +16,8 @@
 #   describe 'update_comment_counter' do
 #     user = User.create(name: 'Microverse  Commenter', photo: 'http://via.placeholder.com/250x250',
 #                        bio: 'Collaboratively')
-<<<<<<< HEAD
 #     post = Post.create(title: 'test', text: 'post content', user: user, comments_counter: 0, likes_counter: 0)
-=======
 #     post = Post.create(title: 'test', text: 'post content', author: user, comment_counter: 0, like_counter: 0)
->>>>>>> d14de379117d55137c2e903f79a1a885c5ef607b
 #     subject = Comment.create(post:, user: user, text: 'Hi Tom!')
 
 #     it 'increments the comments counter on the associated post' do

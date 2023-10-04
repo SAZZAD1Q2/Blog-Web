@@ -1,21 +1,12 @@
 # require 'rails_helper'
 
 # RSpec.describe 'Posts', type: :request do
-<<<<<<< HEAD
-#   #============================================================================================================
-#   # describe model test features begins Here
-#   #============================================================================================================
-#   user = User.create(name: 'Theodoraldo', photo: 'http://via.placeholder.com/250x250', posts_counter: 0,
-#                      bio: 'Teacher from Ghana.')
-#   post = Post.create(title: 'Test', text: 'Post content', comment_counter: 0, like_counter: 0, user_id: user.id)
-=======
 #   ============================================================================================================
 #   describe model test features begins Here
 #   ============================================================================================================
 #   user = User.create(name: 'Theodoraldo', photo: 'http://via.placeholder.com/250x250', posts_counter: 0,
 #                      bio: 'Teacher from Ghana.')
 #   post = Post.create(title: 'Test', text: 'Post content', comment_counter: 0, like_counter: 0, author: user.id)
->>>>>>> d14de379117d55137c2e903f79a1a885c5ef607b
 
 #   describe 'validations' do
 #     it 'title should be present' do
@@ -91,7 +82,6 @@
 #       expect { subject.send(:update_user_post_count) }.to change { user_two.reload.posts_counter }.by(1)
 #     end
 #   end
-<<<<<<< HEAD
 #   #============================================================================================================
 #   # describe model test features ends Here
 #   #============================================================================================================
@@ -99,7 +89,6 @@
 #   #============================================================================================================
 #   # describe controller test features begins Here
 #   #============================================================================================================
-=======
 #   ============================================================================================================
 #   describe model test features ends Here
 #   ============================================================================================================
@@ -107,7 +96,6 @@
 #   ============================================================================================================
 #   describe controller test features begins Here
 #   ============================================================================================================
->>>>>>> d14de379117d55137c2e903f79a1a885c5ef607b
 #   describe 'GET /posts#index' do
 #     user_m = User.create(name: 'Theodoraldo', photo: 'http://via.placeholder.com/250x250', posts_counter: 0,
 #                          bio: 'Teacher from Ghana.')
@@ -146,13 +134,10 @@
 #       expect(response).to render_template(:show)
 #     end
 #   end
-<<<<<<< HEAD
 #   #============================================================================================================
 #   # describe controller test features ends Here
 #   #============================================================================================================
-=======
 #   ============================================================================================================
 #   describe controller test features ends Here
 #   ============================================================================================================
->>>>>>> d14de379117d55137c2e903f79a1a885c5ef607b
 # end
