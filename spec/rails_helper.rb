@@ -71,12 +71,15 @@ RSpec.configure do |config|
   # config.filter_gems_from_backtrace("gem name")
 
   # Configure Capybara to use Selenium with Chrome as the default driver
-  Capybara.default_driver = :selenium_chrome
+  # Capybara.default_driver = :selenium_chrome
 
   # Register the Selenium driver with the path to the ChromeDriver executable
-  Capybara.register_driver :selenium_chrome do |app|
-    Capybara::Selenium::Driver.new(app, browser: :chrome, driver_path: File.join(__dir__, 'chromedriver.exe'))
+  require 'capybara/rspec'
+
+  Capybara.register_driver :selenium do |app|
+    Capybara::Selenium::Driver.new(app, browser: :chrome, driver_path: 'C:\Users\n\chromedriver\chromedriver.exe')
   end
+
 
   # Other configurations...
 end

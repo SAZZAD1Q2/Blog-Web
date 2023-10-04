@@ -15,9 +15,9 @@ class Post < ApplicationRecord
 
   # Change the method to public
   def recent_comments(limit)
-    self.comments.order(created_at: :desc).limit(limit)
+    comments.order(created_at: :desc).limit(limit)
   end
-
+  
   private
 
   def update_author_post_counter

@@ -7,7 +7,7 @@ RSpec.describe 'posts#index', type: :feature do
 
     @user_one = User.create(
       name: 'Sazzad',
-      photo: 'http://via.placeholder.com/250x250',
+      photo: 'https://unsplash.com/photos/F_-0BxGuVvo',
       bio: 'A programmer from Bangladesh.',
       post_counter: 0
     )
@@ -30,7 +30,10 @@ RSpec.describe 'posts#index', type: :feature do
 
   describe '#Indexpage' do
     it 'can see the user profile picture.' do
+        # expect(page).to have_css("img[src='https://unsplash.com/photos/F_-0BxGuVvo']")
       expect(page).to have_css("img[src='#{@user_one.photo}']")
+    # expect(page).to have_css("img[src='#{@user_one.photo}']")
+
     end
     it 'I can see the user username.' do
       expect(page).to have_content(@user_one.name.to_s)
