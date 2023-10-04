@@ -6,7 +6,7 @@ RSpec.describe 'Posts', type: :request do
   #============================================================================================================
   user = User.create(name: 'Theodoraldo', photo: 'http://via.placeholder.com/250x250', posts_counter: 0,
                      bio: 'Teacher from Ghana.')
-  post = Post.create(title: 'Test', text: 'Post content', comment_counter: 0, like_counter: 0, user_id: user.id)
+  post = Post.create(title: 'Test', text: 'Post content', comment_counter: 0, like_counter: 0, author: user.id)
 
   describe 'validations' do
     it 'title should be present' do

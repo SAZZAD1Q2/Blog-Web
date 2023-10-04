@@ -16,7 +16,7 @@ RSpec.describe Like, type: :model do
   describe 'update_like_counter' do
     user = User.create(name: 'Microverse  Liker', photo: 'http://via.placeholder.com/250x250',
                        bio: 'Collaboratively')
-    post = Post.create(title: 'test', text: 'post content', user: user, comment_counter: 0, like_counter: 0)
+    post = Post.create(title: 'test', text: 'post content', author: user, comment_counter: 0, like_counter: 0)
     subject = Like.create(post:, user: user)
 
     it 'increments the likes counter on the associated post' do
