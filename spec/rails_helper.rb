@@ -5,6 +5,8 @@ require_relative '../config/environment'
 # Prevent database truncation if the environment is production
 abort('The Rails environment is running in production mode!') if Rails.env.production?
 require 'rspec/rails'
+require 'capybara/rails'
+
 # Add additional requires below this line. Rails is not loaded until this point!
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
@@ -29,6 +31,7 @@ begin
 rescue ActiveRecord::PendingMigrationError => e
   abort e.to_s.strip
 end
+
 RSpec.configure do |config|
   # Clean up after ourselves
   config.after(:suite) do
@@ -47,11 +50,11 @@ RSpec.configure do |config|
   # You can uncomment this line to turn off ActiveRecord support entirely.
   # config.use_active_record = false
 
-  # RSpec Rails can automatically mix in different behaviours to your tests
+  # RSpec Rails can automatically mix in different behaviors to your tests
   # based on their file location, for example enabling you to call `get` and
   # `post` in specs under `spec/controllers`.
   #
-  # You can disable this behaviour by removing the line below, and instead
+  # You can disable this behavior by removing the line below, and instead
   # explicitly tag your specs with their type, e.g.:
   #
   #     RSpec.describe UsersController, type: :controller do
@@ -67,16 +70,14 @@ RSpec.configure do |config|
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
 
+  # Configure Capybara to use Selenium with Chrome as the default driver
   Capybara.default_driver = :selenium_chrome
 
-  # spec/rails_helper.rb
+  # Register the Selenium driver with the path to the ChromeDriver executable
+  Capybara.register_driver :selenium_chrome do |app|
+    Capybara::Selenium::Driver.new(app, browser: :chrome, driver_path: File.join(__dir__, 'chromedriver.exe'))
+  end
 
-require 'capybara/rails'
-
-Capybara.register_driver :selenium do |app|
-  Capybara::Selenium::Driver.new(app, browser: :chrome, driver_path: File.join(__dir__, 'chromedriver.exe'))
-end
-
-# Other configurations...
+  # Other configurations...
 
 end
