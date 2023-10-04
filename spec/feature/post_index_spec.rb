@@ -6,12 +6,12 @@ RSpec.describe 'posts#index', type: :feature do
     Post.destroy_all # Destroy all existing posts to start with a clean slate
 
     @user_one = User.create(
-      name: 'Tom',
-      photo: 'https://unsplash.com/photos/F_-0BxGuVvo',
-      bio: 'Teacher from Dhaka.',
+      name: 'Sazzad',
+      photo: 'http://via.placeholder.com/250x250',
+      bio: 'A programmer from Bangladesh.',
       post_counter: 0
     )
-
+    
     @posts = [
       Post.create(
         author: @user_one,

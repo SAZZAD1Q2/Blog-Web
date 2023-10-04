@@ -17,7 +17,7 @@ RSpec.describe 'users#index', type: :feature do
       bio: 'A programmer from Narail.',
       post_counter: 0
     )
-
+    
     visit users_url
   end
 
