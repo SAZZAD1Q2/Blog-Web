@@ -1,7 +1,6 @@
-# rubocop:disable all
 class PostsController < ApplicationController
   def index
-    @user = User.find(params[:user_id])
+    @user = User.includes(posts: :comments).find(params[:user_id])
     @posts = @user.posts.includes(:comments)
   end
 
@@ -24,7 +23,7 @@ class PostsController < ApplicationController
 
     else
       flash.now[:error] = 'Oops, something went wrong'
-      redirect_to new_post_url
+      redirect_to new_user_post_url
     end
   end
 

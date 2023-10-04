@@ -1,9 +1,11 @@
 <section class="container">
   <article class="users-article">
-    <div class="photo"><%= @user.photo %></div>
+    <div class="photo">
+      <%= image_tag(@user.photo, alt: "User profile photo.", class: "display-photo") %>
+    </div>
     <div class="details">
       <h2><%= @user.name %></h2>
-      <p>Number of posts: <%= @user.posts_counter %></p>
+      <p>Number of posts: <%= @user.post_counter %></p>
     </div>
   </article>
 
@@ -20,7 +22,7 @@
   <% end %>
 
   <div class="new-post">
-    <p><%= link_to "Add Post", new_post_url %></p>
+    <p><%= link_to "Add Post", new_post_path %></p>
   </div>
 
   <button type="button" class="pagination">Pagination</button>
