@@ -16,7 +16,7 @@ RSpec.describe Comment, type: :model do
   describe 'update_comment_counter' do
     user = User.create(name: 'Microverse  Commenter', photo: 'http://via.placeholder.com/250x250',
                        bio: 'Collaboratively')
-    post = Post.create(title: 'test', text: 'post content', user: user, comments_counter: 0, likes_counter: 0)
+    post = Post.create(title: 'test', text: 'post content', author: user, comment_counter: 0, like_counter: 0)
     subject = Comment.create(post:, user: user, text: 'Hi Tom!')
 
     it 'increments the comments counter on the associated post' do
