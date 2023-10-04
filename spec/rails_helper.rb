@@ -79,5 +79,4 @@ RSpec.configure do |config|
   end
 
   # Other configurations...
-
 end

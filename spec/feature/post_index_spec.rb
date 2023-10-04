@@ -11,7 +11,7 @@ RSpec.describe 'posts#index', type: :feature do
       bio: 'A programmer from Bangladesh.',
       post_counter: 0
     )
-    
+
     @posts = [
       Post.create(
         author: @user_one,
@@ -78,4 +78,3 @@ RSpec.describe 'posts#index', type: :feature do
     end
   end
 end
-
