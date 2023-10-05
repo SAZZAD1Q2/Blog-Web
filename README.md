@@ -36,7 +36,7 @@
 <li>Ruby</li>
 <li>Rails</li>
 <li>Spec</li>
-<li>integrations</li>
+<li>integration test</li>
 
 ### Tech Stack <a name="tech-stack"></a>
 
