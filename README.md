@@ -56,7 +56,7 @@
 </details>
 
 
-<!-- Features -->
+<!-- Feature -->
 
 ### Key Features <a name="key-features"></a>
 
