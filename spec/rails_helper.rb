@@ -80,6 +80,5 @@ RSpec.configure do |config|
     Capybara::Selenium::Driver.new(app, browser: :chrome, driver_path: 'C:\Users\n\chromedriver\chromedriver.exe')
   end
 
-
   # Other configurations...
 end
