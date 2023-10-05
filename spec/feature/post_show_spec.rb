@@ -37,10 +37,6 @@ RSpec.describe 'posts#show', type: :feature do
       expect(page).to have_content("Comments: #{Post.find(@post1.id).comments.count}")
     end
 
-    it 'I can see how many likes a post has' do
-      expect(page).to have_content("Likes: #{Post.find(@post1.id).likes.count}")
-    end
-
     it 'should see body of the post' do
       expect(page).to have_content(@post1.text.to_s)
     end

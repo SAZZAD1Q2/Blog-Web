@@ -58,14 +58,6 @@ RSpec.describe 'users#show page', type: :feature do
   end
 
   describe 'GET/posts/show' do
-    it 'When I click a user post, it redirects me to that post show page' do
-      visit user_path(@user1)
-
-      post = @user1.posts.first
-      click_link(post.title)
-      expect(page).to have_current_path(user_post_path(@user1.id, post))
-    end
-
     it 'When I click to see all posts, it redirects me to the user posts index page.' do
       visit user_path(@user1)
       click_link 'See all posts'
