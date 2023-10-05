@@ -61,9 +61,9 @@ RSpec.describe 'posts#index', type: :feature do
   describe 'GET show/page' do
     it 'When I click on a post, I am redirected to that post show page.' do
       visit user_posts_path(user_id: @user_one.id)
-       post = @posts.first
-        @posts.each do |post|
-         expect(page).to have_content(post.title.to_s)
+      @posts.first
+      @posts.each do |post|
+        expect(page).to have_content(post.title.to_s)
       end
     end
   end
