@@ -2,7 +2,7 @@
 
 
 
-# 📗 Table of Contents
+# 📗 Table of Content
 
 - [📖 About the Project](#about-project)
   - [🛠 Built With](#built-with)a
@@ -36,6 +36,7 @@
 <li>Ruby</li>
 <li>Rails</li>
 <li>Spec</li>
+<li>integration test</li>
 
 ### Tech Stack <a name="tech-stack"></a>
 
@@ -55,7 +56,7 @@
 </details>
 
 
-<!-- Features -->
+<!-- Feature -->
 
 ### Key Features <a name="key-features"></a>
 
