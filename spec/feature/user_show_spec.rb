@@ -2,33 +2,29 @@ require 'rails_helper'
 
 RSpec.describe 'users#show page', type: :feature do
   before(:each) do
-    User.destroy_all # Destroy all existing users to start with a clean slate
-
     @user1 = User.create(
-      name: 'Sazzad',
-      photo: 'http://via.placeholder.com/250x250',
-      bio: 'A programmer from Bangladesh.',
+      name: 'Cosmas',
+      photo: 'https://unsplash.com/photos/F_-0BxGuVvo',
+      bio: 'Web developer from Uganda',
       post_counter: 0
     )
 
     @user2 = User.create(
-      name: 'Saif',
-      photo: 'http://via.placeholder.com/250x250',
-      bio: 'A programmer from Narail.',
+      name: 'Martin',
+      photo: 'https://unsplash.com/photos/F_-0BxGuVvo',
+      bio: 'Software developer.',
       post_counter: 0
     )
 
     @posts = [
-      Post.create(author: @user1, title: 'Arrival', text: 'Post content 1',
-                  comment_counter: 0, like_counter: 0),
-      Post.create(author: @user1, title: 'Departure', text: 'Post content 2',
-                  comment_counter: 0, like_counter: 0),
-      Post.create(author: @user1, title: 'Reverse', text: 'Post content 3',
-                  comment_counter: 0, like_counter: 0)
+      Post.create(author: @user1, title: 'My test post', text: 'this is a test post1'),
+      Post.create(author: @user1, title: 'My test post2', text: 'this is a test post2'),
+      Post.create(author: @user1, title: 'My test post3', text: 'this is a test post3')
     ]
 
-    visit user_path(@user1)
+    visit users_path
   end
+
   describe 'show page' do
     before(:each) do
       visit user_path(@user1)
@@ -43,7 +39,7 @@ RSpec.describe 'users#show page', type: :feature do
     end
 
     it 'I can see the number of posts the user has written.' do
-      expect(page).to have_content("Number of posts: #{@user1.post_counter}")
+      expect(page).to have_content("Number of posts: #{User.find(@user1.id).post_counter}")
     end
 
     it 'I can see the user bio.' do
@@ -51,22 +47,23 @@ RSpec.describe 'users#show page', type: :feature do
     end
 
     it 'I can see the user first 3 posts.' do
-      @user1.recent_posts.each do |post|
+      @user1.posts.each do |post|
         expect(page).to have_content(post.text)
       end
     end
 
     it 'can see a button to view all user posts' do
-      expect(page).to have_selector('button', text: 'See all posts')
+      expect(page).to have_selector('a', text: 'See all posts')
     end
   end
+
   describe 'GET/posts/show' do
     it 'When I click a user post, it redirects me to that post show page' do
       visit user_path(@user1)
 
-      post = @user1.recent_posts.first
-      click_link(post.id)
-      expect(page).to have_current_path(user_post_path(@user1, post))
+      post = @user1.posts.first
+      click_link(post.title)
+      expect(page).to have_current_path(user_post_path(@user1.id, post))
     end
 
     it 'When I click to see all posts, it redirects me to the user posts index page.' do

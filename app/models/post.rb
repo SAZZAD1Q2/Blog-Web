@@ -1,26 +1,26 @@
-# rubocop:disable all
+# app/models/post.rb
+
 class Post < ApplicationRecord
   belongs_to :author, class_name: 'User'
-  has_many :likes
-  has_many :comments
+  has_many :comments, dependent: :destroy
+  has_many :likes, dependent: :destroy
 
   validates :title, presence: true, length: { maximum: 250 }
   validates :comment_counter, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
   validates :like_counter, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 
-  after_save :update_author_post_counter
+  after_initialize :set_defaults
 
-  attribute :comment_counter, :integer, default: 0
-  attribute :like_counter, :integer, default: 0
-
-  # Change the method to public
-  def recent_comments(limit)
-    comments.order(created_at: :desc).limit(limit)
+  def set_defaults
+    self.comment_counter ||= 0
+    self.like_counter ||= 0
   end
-  
-  private
 
-  def update_author_post_counter
-    author.update_columns(post_counter: author.posts.count)
+  def update_user_posts_counter
+    author.update(post_counter: author.posts.count)
+  end
+
+  def recent_comments(limit = 5)
+    comments.order(created_at: :desc).limit(limit)
   end
 end

@@ -2,23 +2,21 @@ require 'rails_helper'
 
 RSpec.describe 'users#index', type: :feature do
   before(:each) do
-    User.destroy_all # Destroy all existing users to start with a clean slate
-
-    @user1 = User.create(
-      name: 'Sazzad',
-      photo: 'http://via.placeholder.com/250x250',
-      bio: 'A programmer from Bangladesh.',
-      post_counter: 0
-    )
-
-    @user2 = User.create(
-      name: 'Saif',
-      photo: 'http://via.placeholder.com/250x250',
-      bio: 'A programmer from Narail.',
-      post_counter: 0
-    )
-
-    visit users_url
+    @users = [
+      @user1 = User.create(
+        name: 'Cosmas',
+        photo: 'https://unsplash.com/photos/F_-0BxGuVvo',
+        bio: 'Web developer from Uganda',
+        post_counter: 0
+      ),
+      @user2 = User.create(
+        name: 'Martin',
+        photo: 'https://unsplash.com/photos/F_-0BxGuVvo',
+        bio: 'Software developer.',
+        post_counter: 0
+      )
+    ]
+    visit users_path
   end
 
   describe '#indexpage' do
@@ -41,7 +39,7 @@ RSpec.describe 'users#index', type: :feature do
 
     it 'When I click on a user, I am redirected to that user show page.' do
       click_link(@users[0].name)
-      expect(page).to have_current_path(user_path(@users[0].id))
+      expect(page).to have_current_path(user_path(@user1.id))
     end
   end
 end

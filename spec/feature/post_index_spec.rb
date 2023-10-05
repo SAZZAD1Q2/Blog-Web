@@ -2,44 +2,39 @@ require 'rails_helper'
 
 RSpec.describe 'posts#index', type: :feature do
   before(:each) do
-    User.destroy_all # Destroy all existing users to start with a clean slate
-    Post.destroy_all # Destroy all existing posts to start with a clean slate
-
     @user_one = User.create(
-      name: 'Sazzad',
+      name: 'Cosmas',
       photo: 'https://unsplash.com/photos/F_-0BxGuVvo',
-      bio: 'A programmer from Bangladesh.',
-      post_counter: 0
+      bio: 'Web developer from Uganda',
+      posts_counter: 0  # Corrected the attribute name to 'posts_counter'
     )
 
     @posts = [
-      Post.create(
+      @post1 = Post.create(
         author: @user_one,
         title: 'Blog1',
-        text: 'Post content 1'
+        text: 'This is my first post'
       ),
-      Post.create(
+      @post2 = Post.create(
         author: @user_one,
         title: 'Blog2',
-        text: 'Post content 2'
+        text: 'This is my second post'
       )
     ]
-
-    visit user_posts_url(user_id: @user_one.id)
+    visit user_posts_path(user_id: @user_one.id)
   end
 
   describe '#Indexpage' do
     it 'can see the user profile picture.' do
-        # expect(page).to have_css("img[src='https://unsplash.com/photos/F_-0BxGuVvo']")
       expect(page).to have_css("img[src='#{@user_one.photo}']")
-    # expect(page).to have_css("img[src='#{@user_one.photo}']")
-
     end
+
     it 'I can see the user username.' do
       expect(page).to have_content(@user_one.name.to_s)
     end
+
     it 'I can see the number of posts the user has written.' do
-      expect(page).to have_content(@user_one.post_counter.to_s)
+      expect(page).to have_content("Number of posts: #{@user_one.posts_counter}")
     end
 
     it 'should see title of the post' do
@@ -57,27 +52,30 @@ RSpec.describe 'posts#index', type: :feature do
     it 'I can see the first comments on a post.' do
       @posts.each do |post|
         post.recent_comments.each do |comment|
-          expect(page).to have_content(comment.user.text)
+          expect(page).to have_content(comment.text)  # Assuming 'comment.text' is the correct attribute
         end
       end
     end
+
     it 'I can see how many comments a post has' do
       @posts.each do |post|
-        expect(page).to have_content("Comments:#{post.comment_counter}")
+        expect(page).to have_content("Comments: #{post.comments.count}")
       end
     end
+
     it 'I can see how many likes a post has' do
       @posts.each do |post|
-        expect(page).to have_content("Likes:#{post.like_counter}")
+        expect(page).to have_content("Likes: #{post.likes.count}")
       end
     end
   end
+
   describe 'GET show/page' do
-    it 'When I click on a post, I am redirected to that postshow page.' do
-      visit user_posts_url(user_id: @user_one.id)
+    it 'When I click on a post, I am redirected to that post show page.' do
+      visit user_posts_path(user_id: @user_one.id)
       post = @posts.first
-      click_link(post.id)
-      expect(page).to have_current_path(user_post_path(@user_one.id, post.id))
+      click_link(post.title)
+      expect(page).to have_current_path(user_post_path(@user_one.id, post))
     end
   end
 end
