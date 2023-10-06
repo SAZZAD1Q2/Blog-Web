@@ -65,6 +65,7 @@
 - **[Ruby]**
 - **[Rails]**
 - **[postgtreSQL]**
+- **[Add Devise]**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -111,8 +112,20 @@ You may use the online version of my work. Here is the link of online version: [
 
 👤 **Author1**
 
-- GitHub: [@githubhandle](https://github.com/SAZZAD1Q2/Blog-Web.git)
+**Md Sazzad Hossain**
+
+- GitHub: [@githubhandle](https://github.com/SAZZAD1Q2/)
+- Twitter: [@twitterhandle](https://twitter.com/MdHo5453)
 - LinkedIn: [LinkedIn](https://www.linkedin.com/in/sazzad3y/)
+
+ **Author2**
+
+👤 **Theodore Asimeng-Osei**
+
+- GitHub: [@githubhandle](https://github.com/Theodoraldo)
+- Twitter: [@twitterhandle](https://twitter.com/AsimengOse33947)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/theodoreasimeng/)
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

@@ -1,17 +1,22 @@
 Rails.application.routes.draw do
-  root to: 'users#index'
-  # Remove or comment out this line
-  # devise_for :users
-  get '/users', to: 'users#index', as: 'users'
-  get '/users/:id', to: 'users#show', as: 'user'
-  get '/users/:user_id/posts', to: 'posts#index', as: 'user_posts'
-  get '/users/:user_id/posts/new', to: 'posts#new', as: 'new_post'
-  post '/users/:user_id/posts', to: 'posts#create', as: 'create_post'
-  get '/users/:user_id/posts/:id', to: 'posts#show', as: 'user_post'
-  resources :users, only: [] do
-    resources :posts, only: [] do
-      resources :comments, only: [:new, :create]
-      resources :likes, only: [:new, :create]
+  devise_for :users, controllers: { unlocks: 'unlocks' }
+
+  root "users#index"
+
+  resources :users, only: [:index, :show] do
+    resources :posts, only: [:index, :show] do
+      resources :comments, only: [:new, :create] # Nested comments routes under posts
+      post 'likes', to: 'likes#create' # Likes for posts
     end
   end
+
+  resources :posts, only: [:new, :create, :destroy] do
+    resources :comments, only: [:destroy] # Nested comments routes under posts
+  end
+
+  # Additional routes
+  post '/posts/:post_id/likes', to: 'likes#create', as: 'post_likes'
+  # Add a custom route for unlocking accounts
+  get '/unlock', to: 'unlocks#new', as: 'new_unlock'
+  post '/unlock', to: 'unlocks#create', as: 'unlock'
 end

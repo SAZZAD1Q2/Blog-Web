@@ -1,5 +1,7 @@
 class ApplicationController < ActionController::Base
-  def current_user
-    @current_user = User.first
-  end
+  # Remove the current_user method
+  protect_from_forgery with: :exception
+  before_action :authenticate_user!
+
+  include DeviseWhitelist
 end
